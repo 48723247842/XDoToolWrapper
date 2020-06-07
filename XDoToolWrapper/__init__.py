@@ -110,7 +110,7 @@ class XDoToolWrapper:
 		self.refocus_window()
 		self.exec( f"xdotool key F11" )
 
-	def maximize_window( self ):
+	def fullscreen( self ):
 		self.maximize_window()
 
 	def move_mouse( self , x=0 , y=0 ):

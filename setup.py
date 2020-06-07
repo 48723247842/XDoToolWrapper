@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
 	name="XDoToolWrapper",
-	version="0.0.2",
+	version="0.0.3",
 	author="7435171",
 	author_email="48723247842@protonmail.com",
 	description="XDoTool Wrapper",
