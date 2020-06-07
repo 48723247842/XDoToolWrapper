@@ -31,14 +31,13 @@ class XDoToolWrapper:
 				monitors[ line_items[ 2 ] ] = {
 					"name": line_items[ 0 ] ,
 					"size": {
-						"x": int( size_x ) ,
-						"y": int( size_y ) ,
+						"x": size_x ,
+						"y": size_y ,
 					}
 				}
 		self.monitors = monitors
-		return self.monitors
 
-	def attach_via_name( self , window_name , number_of_tries=20 , sleep_time=1 ):
+	def attach_via_name( self , window_name , number_of_tries=10 , sleep_time=1 ):
 		for i in range( 1 , number_of_tries ):
 			window_id = self.exec( f"xdotool search --desktop 0 --name '{window_name}'" )
 			window_id = window_id.split( "\n" )
@@ -83,8 +82,8 @@ class XDoToolWrapper:
 			geometry = lines[ -1 ].split( "Geometry: " )[ 1 ].split( "x" )
 			geometry_x = geometry[ 0 ]
 			geometry_y = geometry[ 1 ]
-			center_x = math.floor( ( int( geometry_x ) / 2 ) )
-			center_y = math.floor( ( int( geometry_y ) / 2 ) )
+			center_x = math.floor( ( geometry_x / 2 ) )
+			center_y = math.floor( ( geometry_y / 2 ) )
 			self.window_geometry = {
 				"x": geometry_x ,
 				"y": geometry_y ,
@@ -93,7 +92,7 @@ class XDoToolWrapper:
 					"y": center_y ,
 				}
 			}
-			return self.window_geometry
+			print( self.window_geometry )
 		except Exception as e:
 			print( e )
 			return False
@@ -154,5 +153,5 @@ class XDoToolWrapper:
 if __name__ == '__main__':
 	xdotool = XDoToolWrapper()
 	xdotool.get_monitors()
-	xdotool.attach_via_name( "Disney+ | Video Player" )
+	xdotool.attach_via_name( "Chrome" )
 	xdotool.get_window_geometry()
