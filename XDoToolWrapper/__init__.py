@@ -14,6 +14,7 @@ class XDoToolWrapper:
 		time.sleep( milliseconds )
 
 	def exec( self , bash_command ):
+		bash_command = "DISPLAY=:0.0 " + bash_command
 		return subprocess.getoutput( bash_command )
 
 	def get_monitors( self ):
